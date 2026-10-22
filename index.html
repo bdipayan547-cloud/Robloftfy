@@ -1,1619 +1,1422 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta charset="UTF-8">
+<title>ROBLOTFY — The Blocky Meme</title>
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-    <meta
-        name="description"
-        content="ROBLOTFY — The ultimate cartoon memecoin."
-    >
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #35a9ff;
+    color: #17151f;
+    overflow-x: hidden;
+}
 
-    <title>ROBLOTFY — The Meme Coin</title>
+a {
+    text-decoration: none;
+    color: inherit;
+}
 
+/* =========================
+   NAVBAR
+========================= */
 
-    <style>
+.nav {
+    position: sticky;
+    top: 0;
+    z-index: 20;
 
-        /* =====================================================
-           RESET
-        ===================================================== */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    padding: 14px 6%;
 
+    background: #ffd83d;
+    border-bottom: 5px solid #17151f;
+}
 
-        html {
-            scroll-behavior: smooth;
-        }
+.logo {
+    font-size: 30px;
+    font-weight: 1000;
+    letter-spacing: -2px;
+    text-shadow: 3px 3px #ffffff;
+}
 
+.navlinks {
+    display: flex;
+    gap: 12px;
+}
 
-        body {
+/* =========================
+   BUTTONS
+========================= */
 
-            min-height: 100vh;
+.btn {
+    display: inline-block;
 
-            font-family:
-                "Trebuchet MS",
-                "Arial Rounded MT Bold",
-                Arial,
-                sans-serif;
+    padding: 11px 17px;
 
-            color: #17213b;
+    border: 4px solid #17151f;
+    border-radius: 13px;
 
-            background:
+    background: #ffffff;
 
-                radial-gradient(
-                    circle at 15% 15%,
-                    #ffffff 0,
-                    transparent 18%
-                ),
+    font-weight: 1000;
 
-                linear-gradient(
-                    180deg,
-                    #69ddff 0%,
-                    #b9f3ff 45%,
-                    #fef6c9 100%
-                );
+    box-shadow: 5px 5px #17151f;
 
-            overflow-x: hidden;
-        }
+    cursor: pointer;
 
+    transition: 0.12s;
+}
 
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
+.btn:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 3px 3px #17151f;
+}
 
+.btn:active {
+    transform: translate(5px, 5px);
+    box-shadow: 0 0 #17151f;
+}
 
-        /* =====================================================
-           CARTOON BACKGROUND
-        ===================================================== */
+.buy {
+    background: #ff5c9a;
+}
 
-        body::before {
+/* =========================
+   HERO
+========================= */
 
-            content: "";
+.hero {
+    min-height: 620px;
 
-            position: fixed;
+    padding: 65px 6%;
 
-            inset: 0;
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
 
-            pointer-events: none;
+    gap: 35px;
 
-            background-image:
+    align-items: center;
+}
 
-                radial-gradient(
-                    #ffffff 2px,
-                    transparent 3px
-                ),
+.hero h1 {
+    font-size: clamp(55px, 9vw, 110px);
 
-                radial-gradient(
-                    #ffffff 1px,
-                    transparent 2px
-                );
+    line-height: 0.82;
 
-            background-size:
-                90px 90px,
-                45px 45px;
+    font-weight: 1000;
 
-            background-position:
-                10px 20px,
-                30px 60px;
+    letter-spacing: -7px;
+}
 
-            opacity: .35;
+.hero h1 span {
+    color: #ff5c9a;
 
-            z-index: -5;
-        }
+    text-shadow: 6px 6px #17151f;
+}
 
+.hero p {
+    font-size: 20px;
 
-        body::after {
+    font-weight: 800;
 
-            content: "";
+    max-width: 650px;
 
-            position: fixed;
+    margin: 28px 0;
+}
 
-            left: -10%;
-            right: -10%;
+.hero-actions {
+    display: flex;
 
-            bottom: -170px;
+    gap: 15px;
 
-            height: 330px;
+    flex-wrap: wrap;
+}
 
-            background: #8de55d;
+/* =========================
+   MASCOT
+========================= */
 
-            border-top:
-                8px solid #1f8b45;
+.mascot-card {
+    width: min(440px, 90vw);
 
-            border-radius:
-                50% 50% 0 0;
+    aspect-ratio: 1;
 
-            transform: rotate(-2deg);
+    border: 7px solid #17151f;
 
-            z-index: -4;
-        }
+    border-radius: 38px;
 
+    background: #ffd83d;
 
-        /* =====================================================
-           CLOUDS
-        ===================================================== */
+    box-shadow: 14px 14px #17151f;
 
-        .cloud {
+    padding: 25px;
 
-            position: fixed;
+    transform: rotate(2deg);
+}
 
-            width: 130px;
-            height: 48px;
+.mascot-card img {
+    width: 100%;
+    height: 100%;
 
-            background: #ffffff;
+    object-fit: contain;
+}
 
-            border:
-                4px solid #5d8fb0;
+/* =========================
+   GENERAL SECTIONS
+========================= */
 
-            border-radius: 50px;
+.section {
+    padding: 70px 6%;
 
-            opacity: .95;
+    background: #fffdf7;
 
-            z-index: -2;
+    border-top: 6px solid #17151f;
+}
 
-            box-shadow:
-                5px 7px 0
-                rgba(41, 96, 125, .12);
-        }
+.section h2 {
+    font-size: clamp(40px, 6vw, 72px);
 
+    font-weight: 1000;
 
-        .cloud::before,
-        .cloud::after {
+    letter-spacing: -4px;
 
-            content: "";
+    text-align: center;
 
-            position: absolute;
+    margin-bottom: 30px;
+}
 
-            background: #ffffff;
+/* =========================
+   STATS
+========================= */
 
-            border:
-                4px solid #5d8fb0;
+.stats {
+    display: grid;
 
-            border-bottom: 0;
+    grid-template-columns: repeat(3, 1fr);
 
-            border-radius: 50% 50% 0 0;
-        }
+    gap: 20px;
 
+    max-width: 1050px;
 
-        .cloud::before {
+    margin: auto;
+}
 
-            width: 58px;
-            height: 58px;
+.stat {
+    padding: 25px;
 
-            left: 18px;
-            bottom: 20px;
-        }
+    border: 5px solid #17151f;
 
+    border-radius: 22px;
 
-        .cloud::after {
+    background: #ffffff;
 
-            width: 72px;
-            height: 72px;
+    box-shadow: 8px 8px #17151f;
 
-            right: 12px;
-            bottom: 18px;
-        }
+    text-align: center;
 
+    font-weight: 1000;
+}
 
-        .cloud-1 {
+.stat b {
+    font-size: 40px;
 
-            top: 105px;
-            left: -35px;
+    display: block;
 
-            transform: scale(.85);
-        }
+    margin-bottom: 8px;
+}
 
+/* =========================
+   GAME SECTION
+========================= */
 
-        .cloud-2 {
+.game-section {
+    background: #65d66f;
+}
 
-            top: 240px;
-            right: -40px;
+.game-intro {
+    text-align: center;
 
-            transform: scale(1.1);
-        }
+    font-size: 18px;
 
+    font-weight: 800;
 
-        .cloud-3 {
+    max-width: 700px;
 
-            top: 620px;
-            left: 4%;
+    margin: -15px auto 25px;
+}
 
-            transform: scale(.6);
+.game-ui {
+    display: flex;
 
-            opacity: .7;
-        }
+    justify-content: space-between;
 
+    align-items: center;
 
-        /* =====================================================
-           NAVBAR
-        ===================================================== */
+    margin-bottom: 12px;
 
-        nav {
+    gap: 10px;
+}
 
-            width:
-                min(
-                    1160px,
-                    calc(100% - 32px)
-                );
+.badge {
+    background: #ffffff;
 
-            margin: 20px auto;
+    border: 4px solid #17151f;
 
-            padding: 12px 14px;
+    border-radius: 12px;
 
-            display: flex;
+    padding: 9px 14px;
 
-            align-items: center;
+    font-weight: 1000;
 
-            justify-content: space-between;
+    box-shadow: 4px 4px #17151f;
+}
 
-            background:
-                #ffffff;
+/* =========================
+   GAME CANVAS
+========================= */
 
-            border:
-                4px solid #17213b;
+#game {
+    position: relative;
 
-            border-radius: 22px;
+    width: 100%;
 
-            box-shadow:
-                0 8px 0 #17213b,
-                0 14px 25px
-                rgba(31, 72, 100, .18);
+    height: 330px;
 
-            position: relative;
+    border: 7px solid #17151f;
 
-            z-index: 20;
-        }
+    border-radius: 25px;
 
+    background:
+        linear-gradient(
+            #63c8ff 0 68%,
+            #8be77d 68%
+        );
 
-        .logo {
+    overflow: hidden;
 
-            display: flex;
+    box-shadow: 10px 10px #17151f;
 
-            align-items: center;
+    touch-action: none;
 
-            gap: 11px;
+    cursor: pointer;
+}
 
-            font-size: 20px;
+/* Sun */
 
-            font-weight: 1000;
+.sun {
+    position: absolute;
 
-            letter-spacing: 1px;
-        }
+    right: 8%;
+    top: 25px;
 
+    width: 65px;
+    height: 65px;
 
-        .logo-icon {
+    border: 5px solid #17151f;
 
-            width: 43px;
-            height: 43px;
+    border-radius: 50%;
 
-            display: flex;
+    background: #ffd83d;
+}
 
-            align-items: center;
-            justify-content: center;
+/* Clouds */
 
-            background:
-                #176cff;
+.gcloud {
+    position: absolute;
 
-            color: white;
+    width: 115px;
+    height: 35px;
 
-            border:
-                4px solid #17213b;
+    border: 4px solid #17151f;
 
-            border-radius: 13px;
+    border-radius: 30px;
 
-            box-shadow:
-                4px 4px 0 #17213b;
+    background: #ffffff;
+}
 
-            transform: rotate(-4deg);
-        }
+.gcloud.a {
+    top: 45px;
+    left: 12%;
+}
 
+.gcloud.b {
+    top: 105px;
+    left: 45%;
+}
 
-        .nav-buttons {
+/* Ground */
 
-            display: flex;
+.ground {
+    position: absolute;
 
-            gap: 10px;
-        }
+    left: 0;
+    right: 0;
 
+    bottom: 57px;
 
-        /* =====================================================
-           CARTOON BUTTONS
-        ===================================================== */
+    border-top: 6px solid #17151f;
+}
 
-        .button {
+/* =========================
+   PLAYER
+========================= */
 
-            min-height: 48px;
+#player {
+    position: absolute;
 
-            padding:
-                0 21px;
+    left: 90px;
 
-            display: inline-flex;
+    bottom: 58px;
 
-            align-items: center;
+    width: 70px;
+    height: 90px;
 
-            justify-content: center;
+    z-index: 5;
 
-            border:
-                4px solid #17213b;
+    filter: drop-shadow(
+        4px 4px 0 #17151f
+    );
+}
 
-            border-radius: 15px;
+#player img {
+    width: 100%;
+    height: 100%;
 
-            font-size: 14px;
+    object-fit: contain;
+}
 
-            font-weight: 1000;
+#player.jump {
+    bottom: 155px;
+}
 
-            cursor: pointer;
+/* =========================
+   OBSTACLES
+========================= */
 
-            transition:
-                transform .15s ease,
-                box-shadow .15s ease;
+.obstacle {
+    position: absolute;
 
-            box-shadow:
-                5px 5px 0 #17213b;
+    bottom: 58px;
 
-            position: relative;
-        }
+    width: 45px;
+    height: 65px;
 
+    background: #ff5c9a;
 
-        .button:hover {
+    border: 5px solid #17151f;
 
-            transform:
-                translate(
-                    2px,
-                    2px
-                );
+    border-radius: 9px 9px 2px 2px;
+}
 
-            box-shadow:
-                3px 3px 0 #17213b;
-        }
+.obstacle:before,
+.obstacle:after {
+    content: "";
 
+    position: absolute;
 
-        .button:active {
+    background: #17151f;
 
-            transform:
-                translate(
-                    5px,
-                    5px
-                );
+    width: 5px;
+    height: 27px;
 
-            box-shadow:
-                0 0 0 #17213b;
-        }
+    top: -18px;
+}
 
+.obstacle:before {
+    left: 8px;
 
-        .x-button {
+    transform: rotate(-28deg);
+}
 
-            background:
-                #ffffff;
+.obstacle:after {
+    right: 8px;
 
-            color:
-                #17213b;
-        }
+    transform: rotate(28deg);
+}
 
+/* =========================
+   COINS
+========================= */
 
-        .buy-button {
+.coin {
+    position: absolute;
 
-            background:
-                #ffd52e;
+    width: 28px;
+    height: 28px;
 
-            color:
-                #17213b;
-        }
+    border: 4px solid #17151f;
 
+    border-radius: 50%;
 
-        .buy-button::after {
+    background: #ffd83d;
 
-            content: "★";
+    display: grid;
 
-            position: absolute;
+    place-items: center;
 
-            top: -13px;
-            right: -10px;
+    font-weight: 1000;
+}
 
-            font-size: 17px;
+/* =========================
+   GAME START / GAME OVER
+========================= */
 
-            color: #ff4c6a;
+#overlay {
+    position: absolute;
 
-            transform:
-                rotate(15deg);
-        }
+    inset: 0;
 
+    z-index: 10;
 
-        /* =====================================================
-           HERO
-        ===================================================== */
+    background: rgba(255, 255, 255, 0.9);
 
-        .hero {
+    display: grid;
 
-            width:
-                min(
-                    1160px,
-                    calc(100% - 32px)
-                );
+    place-items: center;
+}
 
-            min-height:
-                calc(100vh - 130px);
+.card {
+    background: #ffd83d;
 
-            margin:
-                auto;
+    border: 6px solid #17151f;
 
-            display: grid;
+    border-radius: 22px;
 
-            grid-template-columns:
-                1fr 1fr;
+    padding: 25px;
 
-            align-items: center;
+    text-align: center;
 
-            gap: 65px;
+    box-shadow: 9px 9px #17151f;
 
-            padding:
-                65px 0 120px;
+    max-width: 390px;
 
-            position: relative;
-        }
+    margin: 20px;
+}
 
+.card h3 {
+    font-size: 35px;
 
-        /* =====================================================
-           HERO TEXT
-        ===================================================== */
+    margin-bottom: 10px;
+}
 
-        .hero-content {
+.card p {
+    font-weight: 800;
 
-            position: relative;
+    margin-bottom: 18px;
+}
 
-            z-index: 5;
-        }
+/* Mobile jump */
 
+#mobileJump {
+    display: none;
+}
 
-        .tag {
+/* =========================
+   BUY SECTION
+========================= */
 
-            display: inline-block;
+.token {
+    background: #ffd83d;
+}
 
-            padding:
-                9px 15px;
+.buybox {
+    max-width: 800px;
 
-            margin-bottom:
-                22px;
+    margin: auto;
 
-            background:
-                #ff5c83;
+    text-align: center;
 
-            color: white;
+    border: 6px solid #17151f;
 
-            border:
-                4px solid #17213b;
+    border-radius: 28px;
 
-            border-radius:
-                100px;
+    padding: 40px;
 
-            font-size:
-                12px;
+    background: #ffffff;
 
-            font-weight:
-                1000;
+    box-shadow: 10px 10px #17151f;
+}
 
-            letter-spacing:
-                1.5px;
+.buybox p {
+    font-weight: 800;
 
-            box-shadow:
-                5px 5px 0 #17213b;
+    margin: 12px auto 25px;
+}
 
-            transform:
-                rotate(-2deg);
-        }
+/* =========================
+   FOOTER
+========================= */
 
+footer {
+    padding: 30px 6%;
 
-        h1 {
+    background: #ff5c9a;
 
-            font-size:
-                clamp(
-                    65px,
-                    9vw,
-                    125px
-                );
+    border-top: 6px solid #17151f;
 
-            line-height:
-                .82;
+    font-weight: 1000;
 
-            letter-spacing:
-                -7px;
+    text-align: center;
+}
 
-            font-weight:
-                1000;
+/* =========================
+   MOBILE
+========================= */
 
-            color:
-                #ffffff;
+@media (max-width: 800px) {
 
-            text-shadow:
+    .nav {
+        padding: 12px 4%;
+    }
 
-                5px 5px 0 #17213b,
+    .logo {
+        font-size: 24px;
+    }
 
-                9px 9px 0
-                #176cff;
+    .navlinks .btn:first-child {
+        display: none;
+    }
 
-            margin-bottom:
-                30px;
+    .hero {
+        grid-template-columns: 1fr;
 
-            transform:
-                rotate(-1deg);
-        }
+        padding-top: 45px;
+    }
 
+    .hero h1 {
+        letter-spacing: -4px;
+    }
 
-        h1 span {
+    .stats {
+        grid-template-columns: 1fr;
+    }
 
-            display: block;
+    .stat b {
+        font-size: 32px;
+    }
 
-            color:
-                #ffd52e;
+    #game {
+        height: 280px;
+    }
 
-            text-shadow:
+    .ground {
+        bottom: 49px;
+    }
 
-                5px 5px 0 #17213b,
+    #player {
+        left: 55px;
 
-                9px 9px 0
-                #ff6b82;
-        }
+        bottom: 50px;
 
+        width: 60px;
+        height: 78px;
+    }
 
-        .description {
+    #player.jump {
+        bottom: 140px;
+    }
 
-            max-width:
-                570px;
+    .obstacle {
+        bottom: 49px;
+    }
 
-            padding:
-                20px 23px;
-
-            background:
-                #ffffff;
-
-            border:
-                4px solid #17213b;
-
-            border-radius:
-                22px;
-
-            font-size:
-                17px;
-
-            line-height:
-                1.65;
-
-            font-weight:
-                700;
-
-            box-shadow:
-                7px 7px 0 #17213b;
-
-            margin-bottom:
-                30px;
-
-            position:
-                relative;
-        }
-
-
-        .description::before {
-
-            content:
-                "💬";
-
-            position:
-                absolute;
-
-            top:
-                -22px;
-
-            right:
-                25px;
-
-            font-size:
-                35px;
-
-            transform:
-                rotate(8deg);
-        }
-
-
-        .hero-buttons {
-
-            display:
-                flex;
-
-            flex-wrap:
-                wrap;
-
-            gap:
-                13px;
-        }
-
-
-        /* =====================================================
-           HERO IMAGE
-        ===================================================== */
-
-        .image-container {
-
-            position:
-                relative;
-
-            display:
-                flex;
-
-            justify-content:
-                center;
-
-            align-items:
-                center;
-        }
-
-
-        .image-container::before {
-
-            content:
-                "";
-
-            position:
-                absolute;
-
-            width:
-                88%;
-
-            aspect-ratio:
-                1;
-
-            border-radius:
-                50%;
-
-            background:
-                #176cff;
-
-            opacity:
-                .30;
-
-            filter:
-                blur(35px);
-        }
-
-
-        .hero-image {
-
-            width:
-                min(
-                    540px,
-                    100%
-                );
-
-            aspect-ratio:
-                1;
-
-            object-fit:
-                cover;
-
-            border-radius:
-                50%;
-
-            border:
-                7px solid #17213b;
-
-            box-shadow:
-
-                0 0 0 8px
-                #ffd52e,
-
-                12px 12px 0
-                #17213b,
-
-                20px 25px 50px
-                rgba(24,62,86,.25);
-
-            position:
-                relative;
-
-            z-index:
-                2;
-
-            animation:
-                cartoonFloat 4s ease-in-out infinite;
-        }
-
-
-        @keyframes cartoonFloat {
-
-            0%,
-            100% {
-
-                transform:
-                    translateY(0)
-                    rotate(1deg);
-            }
-
-            50% {
-
-                transform:
-                    translateY(-13px)
-                    rotate(-1deg);
-            }
-        }
-
-
-        /* =====================================================
-           DECORATIVE STARS
-        ===================================================== */
-
-        .star {
-
-            position:
-                absolute;
-
-            font-size:
-                38px;
-
-            z-index:
-                4;
-
-            animation:
-                starFloat 3s ease-in-out infinite;
-        }
-
-
-        .star-1 {
-
-            top:
-                12%;
-
-            right:
-                3%;
-
-            color:
-                #ffd52e;
-
-            text-shadow:
-                3px 3px 0 #17213b;
-        }
-
-
-        .star-2 {
-
-            bottom:
-                12%;
-
-            left:
-                47%;
-
-            color:
-                #ff5c83;
-
-            text-shadow:
-                3px 3px 0 #17213b;
-
-            animation-delay:
-                1s;
-        }
-
-
-        .star-3 {
-
-            top:
-                38%;
-
-            left:
-                -20px;
-
-            color:
-                #ffffff;
-
-            text-shadow:
-                3px 3px 0 #176cff;
-
-            animation-delay:
-                1.5s;
-        }
-
-
-        @keyframes starFloat {
-
-            0%,
-            100% {
-                transform:
-                    translateY(0)
-                    rotate(0);
-            }
-
-            50% {
-                transform:
-                    translateY(-8px)
-                    rotate(12deg);
-            }
-        }
-
-
-        /* =====================================================
-           STATS
-        ===================================================== */
-
-        .stats {
-
-            width:
-                min(
-                    1160px,
-                    calc(100% - 32px)
-                );
-
-            margin:
-                0 auto 120px;
-
-            display:
-                grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
-            gap:
-                18px;
-        }
-
-
-        .stat {
-
-            padding:
-                28px;
-
-            background:
-                #ffffff;
-
-            border:
-                4px solid #17213b;
-
-            border-radius:
-                24px;
-
-            box-shadow:
-                7px 7px 0 #17213b;
-
-            transition:
-                transform .2s ease;
-        }
-
-
-        .stat:nth-child(1) {
-            transform:
-                rotate(-1.5deg);
-        }
-
-
-        .stat:nth-child(2) {
-            transform:
-                rotate(1.5deg);
-        }
-
-
-        .stat:nth-child(3) {
-            transform:
-                rotate(-1deg);
-        }
-
-
-        .stat:hover {
-
-            transform:
-                translateY(-8px)
-                rotate(0deg);
-        }
-
-
-        .stat h3 {
-
-            font-size:
-                21px;
-
-            margin-bottom:
-                10px;
-        }
-
-
-        .stat p {
-
-            color:
-                #53617a;
-
-            font-size:
-                14px;
-
-            line-height:
-                1.6;
-
-            font-weight:
-                700;
-        }
-
-
-        /* =====================================================
-           BUY SECTION
-        ===================================================== */
-
-        .buy-section {
-
-            width:
-                min(
-                    900px,
-                    calc(100% - 32px)
-                );
-
-            margin:
-                0 auto 120px;
-
-            padding:
-                55px 35px;
-
-            text-align:
-                center;
-
-            background:
-                #ffffff;
-
-            border:
-                5px solid #17213b;
-
-            border-radius:
-                30px;
-
-            box-shadow:
-                10px 10px 0 #17213b;
-
-            position:
-                relative;
-        }
-
-
-        .buy-section::before {
-
-            content:
-                "🚀";
-
-            position:
-                absolute;
-
-            top:
-                -38px;
-
-            left:
-                8%;
-
-            font-size:
-                52px;
-
-            transform:
-                rotate(-15deg);
-        }
-
-
-        .buy-section::after {
-
-            content:
-                "💎";
-
-            position:
-                absolute;
-
-            bottom:
-                -32px;
-
-            right:
-                8%;
-
-            font-size:
-                45px;
-
-            transform:
-                rotate(12deg);
-        }
-
-
-        .buy-section h2 {
-
-            font-size:
-                clamp(
-                    42px,
-                    6vw,
-                    70px
-                );
-
-            line-height:
-                .9;
-
-            letter-spacing:
-                -4px;
-
-            margin-bottom:
-                20px;
-
-            color:
-                #176cff;
-
-            text-shadow:
-                4px 4px 0 #17213b;
-        }
-
-
-        .buy-section p {
-
-            max-width:
-                650px;
-
-            margin:
-                0 auto 25px;
-
-            color:
-                #53617a;
-
-            line-height:
-                1.7;
-
-            font-weight:
-                700;
-        }
-
-
-        .contract {
-
-            padding:
-                17px;
-
-            margin-bottom:
-                28px;
-
-            background:
-                #eaf8ff;
-
-            border:
-                4px dashed #176cff;
-
-            border-radius:
-                15px;
-
-            color:
-                #176cff;
-
-            font-family:
-                monospace;
-
-            font-size:
-                13px;
-
-            font-weight:
-                bold;
-
-            word-break:
-                break-all;
-        }
-
-
-        /* =====================================================
-           FOOTER
-        ===================================================== */
-
-        footer {
-
-            padding:
-                35px 20px 50px;
-
-            text-align:
-                center;
-
-            color:
-                #ffffff;
-
-            font-size:
-                13px;
-
-            font-weight:
-                900;
-
-            text-shadow:
-                2px 2px 0 #17213b;
-        }
-
-
-        /* =====================================================
-           MOBILE
-        ===================================================== */
-
-        @media (max-width: 850px) {
-
-            nav {
-
-                margin-top:
-                    12px;
-            }
-
-
-            .hero {
-
-                grid-template-columns:
-                    1fr;
-
-                text-align:
-                    center;
-
-                gap:
-                    55px;
-
-                padding-top:
-                    45px;
-            }
-
-
-            .description {
-
-                margin-left:
-                    auto;
-
-                margin-right:
-                    auto;
-            }
-
-
-            .hero-buttons {
-
-                justify-content:
-                    center;
-            }
-
-
-            .hero-image {
-
-                width:
-                    min(
-                        450px,
-                        88vw
-                    );
-            }
-
-
-            .stats {
-
-                grid-template-columns:
-                    1fr;
-            }
-
-
-            .stat:nth-child(1),
-            .stat:nth-child(2),
-            .stat:nth-child(3) {
-
-                transform:
-                    rotate(0);
-            }
-        }
-
-
-        @media (max-width: 520px) {
-
-            nav {
-
-                width:
-                    calc(100% - 20px);
-
-                padding:
-                    10px;
-            }
-
-
-            .logo {
-
-                font-size:
-                    16px;
-            }
-
-
-            .logo-icon {
-
-                width:
-                    38px;
-
-                height:
-                    38px;
-            }
-
-
-            .nav-buttons .buy-button {
-
-                display:
-                    none;
-            }
-
-
-            .nav-buttons .x-button {
-
-                min-height:
-                    42px;
-
-                padding:
-                    0 13px;
-            }
-
-
-            .hero {
-
-                width:
-                    calc(100% - 22px);
-
-                padding-top:
-                    35px;
-            }
-
-
-            h1 {
-
-                font-size:
-                    65px;
-
-                letter-spacing:
-                    -4px;
-            }
-
-
-            .description {
-
-                font-size:
-                    15px;
-
-                padding:
-                    18px;
-            }
-
-
-            .button {
-
-                width:
-                    100%;
-            }
-
-
-            .hero-buttons {
-
-                width:
-                    100%;
-            }
-
-
-            .stats,
-            .buy-section {
-
-                width:
-                    calc(100% - 22px);
-            }
-
-
-            .buy-section {
-
-                padding:
-                    45px 20px;
-            }
-
-
-            .cloud-3 {
-
-                display:
-                    none;
-            }
-        }
-
-    </style>
-
+    #mobileJump {
+        display: inline-block;
+    }
+}
+</style>
 </head>
-
 
 <body>
 
+<!-- =========================
+     NAVIGATION
+========================= -->
 
-    <!-- CARTOON CLOUDS -->
+<nav class="nav">
 
-    <div class="cloud cloud-1"></div>
-    <div class="cloud cloud-2"></div>
-    <div class="cloud cloud-3"></div>
+    <div class="logo">
+        ROBLOTFY
+    </div>
 
-
-    <!-- DECORATIVE STARS -->
-
-    <div class="star star-1">★</div>
-    <div class="star star-2">✦</div>
-    <div class="star star-3">★</div>
-
-
-    <!-- =====================================================
-         NAVIGATION
-    ====================================================== -->
-
-    <nav>
+    <div class="navlinks">
 
         <a
-            href="#"
-            class="logo"
+            class="btn"
+            href="https://x.com/dipayanmeme"
+            target="_blank"
         >
-
-            <div class="logo-icon">
-                R
-            </div>
-
-            ROBLOTFY
-
+            𝕏 COMMUNITY
         </a>
 
+        <a
+            class="btn buy"
+            href="#buy"
+        >
+            BUY NOW
+        </a>
 
-        <div class="nav-buttons">
+    </div>
 
-            <!-- X -->
+</nav>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<header class="hero">
+
+    <div>
+
+        <h1>
+            THE<br>
+            <span>BLOCKY</span><br>
+            MEME.
+        </h1>
+
+        <p>
+            ROBLOTFY is a chaotic little meme coin
+            built for blocky characters, big laughs
+            and an even bigger community.
+        </p>
+
+        <div class="hero-actions">
 
             <a
-                href="https://x.com/dipayanmeme"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="button x-button"
-            >
-                𝕏 Join Community
-            </a>
-
-
-            <!-- BUY -->
-
-            <a
+                class="btn buy"
                 href="#buy"
-                class="button buy-button"
             >
-                🚀 Buy Now
+                🚀 BUY ROBLOTFY
+            </a>
+
+            <a
+                class="btn"
+                href="#game"
+            >
+                🎮 PLAY THE GAME
             </a>
 
         </div>
 
-    </nav>
+    </div>
 
 
+    <div>
 
-    <!-- =====================================================
-         HERO
-    ====================================================== -->
-
-    <section class="hero">
-
-
-        <div class="hero-content">
-
-
-            <div class="tag">
-
-                🎮 THE MEME COIN
-
-            </div>
-
-
-            <h1>
-
-                Meet
-
-                <span>
-                    ROBLOTFY.
-                </span>
-
-            </h1>
-
-
-            <p class="description">
-
-                Welcome to ROBLOTFY —
-                a colorful community-first
-                memecoin made for people
-                who believe the internet
-                should be more fun.
-
-                <br><br>
-
-                Grab your avatar.
-                Join the community.
-                Let the memes begin. 🚀
-
-            </p>
-
-
-            <div class="hero-buttons">
-
-
-                <!-- BUY -->
-
-                <a
-                    href="#buy"
-                    class="button buy-button"
-                >
-                    🚀 Buy ROBLOTFY
-                </a>
-
-
-                <!-- X -->
-
-                <a
-                    href="https://x.com/dipayanmeme"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="button x-button"
-                >
-                    𝕏 Follow Us
-                </a>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- =================================================
-             MASCOT IMAGE
-        ================================================== -->
-
-        <div class="image-container">
+        <div class="mascot-card">
 
             <img
                 src="./robloftfy.png"
-                alt="ROBLOTFY Mascot"
-                class="hero-image"
-                loading="eager"
+                alt="ROBLOTFY character"
+            >
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     WHY ROBLOTFY
+========================= -->
+
+<section class="section">
+
+    <h2>
+        WHY ROBLOTFY?
+    </h2>
+
+    <div class="stats">
+
+        <div class="stat">
+
+            <b>🎮</b>
+
+            BLOCKY ENERGY
+
+        </div>
+
+
+        <div class="stat">
+
+            <b>😂</b>
+
+            MEME POWER
+
+        </div>
+
+
+        <div class="stat">
+
+            <b>🚀</b>
+
+            COMMUNITY FIRST
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     ROBLOTFY RUNNER
+========================= -->
+
+<section
+    class="section game-section"
+    id="game"
+>
+
+    <h2>
+        ROBLOTFY RUNNER
+    </h2>
+
+    <p class="game-intro">
+
+        Run, jump and collect ROBLOTFY coins.
+        Dodge the cursed pink blocks and beat
+        your high score!
+
+    </p>
+
+
+    <div class="game-ui">
+
+        <div class="badge">
+
+            SCORE:
+            <span id="score">0</span>
+
+        </div>
+
+
+        <div class="badge">
+
+            BEST:
+            <span id="best">0</span>
+
+        </div>
+
+
+        <button
+            class="btn"
+            id="mobileJump"
+        >
+            JUMP ⬆
+        </button>
+
+    </div>
+
+
+    <div id="game">
+
+        <!-- Sun -->
+
+        <div class="sun"></div>
+
+
+        <!-- Clouds -->
+
+        <div class="gcloud a"></div>
+
+        <div class="gcloud b"></div>
+
+
+        <!-- Ground -->
+
+        <div class="ground"></div>
+
+
+        <!-- Player -->
+
+        <div id="player">
+
+            <img
+                src="./robloftfy.png"
+                alt="ROBLOTFY Runner"
             >
 
         </div>
 
 
-    </section>
+        <!-- Start Screen -->
 
+        <div id="overlay">
 
+            <div class="card">
 
-    <!-- =====================================================
-         STATS
-    ====================================================== -->
+                <h3>
+                    🎮 READY?
+                </h3>
 
-    <section class="stats">
+                <p>
+                    Press SPACE, click, or tap
+                    to jump. Collect coins
+                    and survive!
+                </p>
 
+                <button
+                    class="btn buy"
+                    id="start"
+                >
+                    START RUNNING
+                </button>
 
-        <div class="stat">
-
-            <h3>
-                ⚡ Meme Energy
-            </h3>
-
-            <p>
-                Big memes.
-                Big community.
-                Zero boring vibes.
-            </p>
-
-        </div>
-
-
-        <div class="stat">
-
-            <h3>
-                🎮 Gamer DNA
-            </h3>
-
-            <p>
-                Inspired by gaming,
-                internet culture and
-                digital chaos.
-            </p>
+            </div>
 
         </div>
 
+    </div>
 
-        <div class="stat">
-
-            <h3>
-                🚀 Community First
-            </h3>
-
-            <p>
-                Follow us on X and
-                become part of the
-                ROBLOTFY crew.
-            </p>
-
-        </div>
+</section>
 
 
-    </section>
+<!-- =========================
+     BUY SECTION
+========================= -->
+
+<section
+    class="section token"
+    id="buy"
+>
+
+    <h2>
+        JOIN THE CHAOS
+    </h2>
 
 
+    <div class="buybox">
 
-    <!-- =====================================================
-         BUY SECTION
-    ====================================================== -->
-
-    <section
-        class="buy-section"
-        id="buy"
-    >
-
-
-        <h2>
-            LET'S SEND IT! 🚀
-        </h2>
-
+        <h3 style="font-size:32px">
+            🚀 READY TO BUY?
+        </h3>
 
         <p>
-
-            ROBLOTFY is getting ready
-            for launch.
-
-            Add your official contract
-            address and DEX link when
-            your token is live.
-
+            Replace the button URL with your
+            real token swap or presale link
+            when your contract is ready.
         </p>
 
+        <a
+            class="btn buy"
+            href="https://x.com/dipayanmeme"
+            target="_blank"
+        >
+            BUY NOW →
+        </a>
 
-        <!-- CONTRACT -->
+    </div>
 
-        <div class="contract">
+</section>
 
-            CONTRACT:
-            ADD-YOUR-CONTRACT-ADDRESS-HERE
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    ROBLOTFY © 2026 —
+    Built for memes, blocks & chaos.
+
+    |
+
+    <a
+        href="https://x.com/dipayanmeme"
+        target="_blank"
+    >
+        𝕏 @dipayanmeme
+    </a>
+
+</footer>
+
+
+<!-- =========================
+     GAME JAVASCRIPT
+========================= -->
+
+<script>
+
+const game =
+    document.getElementById("game");
+
+const player =
+    document.getElementById("player");
+
+const overlay =
+    document.getElementById("overlay");
+
+const scoreEl =
+    document.getElementById("score");
+
+const bestEl =
+    document.getElementById("best");
+
+
+let running = false;
+
+let jumping = false;
+
+let score = 0;
+
+let speed = 5;
+
+let last = 0;
+
+let obstacleTimer = 0;
+
+let coinTimer = 0;
+
+let objects = [];
+
+
+let best =
+    Number(
+        localStorage.getItem(
+            "robloftfyBest"
+        ) || 0
+    );
+
+
+bestEl.textContent = best;
+
+
+/* =========================
+   JUMP
+========================= */
+
+function jump() {
+
+    if (!running || jumping) {
+        return;
+    }
+
+    jumping = true;
+
+    player.classList.add("jump");
+
+
+    setTimeout(function () {
+
+        player.classList.remove("jump");
+
+
+        setTimeout(function () {
+
+            jumping = false;
+
+        }, 90);
+
+    }, 520);
+
+}
+
+
+/* =========================
+   SPAWN OBJECT
+========================= */
+
+function spawn(type) {
+
+    const element =
+        document.createElement("div");
+
+
+    const x =
+        game.clientWidth + 30;
+
+
+    if (type === "obstacle") {
+
+        element.className =
+            "obstacle";
+
+    } else {
+
+        element.className =
+            "coin";
+
+        element.textContent = "R";
+
+        element.style.bottom =
+            (90 + Math.random() * 85) + "px";
+
+    }
+
+
+    element.style.left =
+        x + "px";
+
+
+    game.appendChild(element);
+
+
+    objects.push({
+
+        element: element,
+
+        type: type,
+
+        x: x
+
+    });
+
+}
+
+
+/* =========================
+   COLLISION
+========================= */
+
+function hit(a, b) {
+
+    const A =
+        a.getBoundingClientRect();
+
+    const B =
+        b.getBoundingClientRect();
+
+
+    return (
+
+        A.left < B.right - 8 &&
+
+        A.right > B.left + 8 &&
+
+        A.top < B.bottom - 8 &&
+
+        A.bottom > B.top + 8
+
+    );
+
+}
+
+
+/* =========================
+   START GAME
+========================= */
+
+function start() {
+
+    objects.forEach(function (object) {
+
+        object.element.remove();
+
+    });
+
+
+    objects = [];
+
+    running = true;
+
+    jumping = false;
+
+    score = 0;
+
+    speed = 5;
+
+    obstacleTimer = 0;
+
+    coinTimer = 0;
+
+
+    scoreEl.textContent = 0;
+
+
+    overlay.style.display =
+        "none";
+
+
+    player.classList.remove("jump");
+
+
+    last =
+        performance.now();
+
+
+    requestAnimationFrame(loop);
+
+}
+
+
+/* =========================
+   GAME OVER
+========================= */
+
+function end() {
+
+    running = false;
+
+
+    if (score > best) {
+
+        best =
+            Math.floor(score);
+
+        localStorage.setItem(
+            "robloftfyBest",
+            best
+        );
+
+        bestEl.textContent =
+            best;
+
+    }
+
+
+    overlay.innerHTML = `
+
+        <div class="card">
+
+            <h3>
+                💥 OOPS!
+            </h3>
+
+            <p>
+                You scored
+                <b>${Math.floor(score)}</b>.
+                <br>
+                Best:
+                <b>${best}</b>.
+            </p>
+
+            <button
+                class="btn buy"
+                id="again"
+            >
+                PLAY AGAIN
+            </button>
 
         </div>
 
-
-        <!--
-            IMPORTANT:
-
-            Replace "#" with your
-            real DEX / token purchase URL.
-        -->
-
-        <a
-            href="#"
-            class="button buy-button"
-            onclick="
-                alert(
-                    'Add your official DEX or token purchase link here.'
-                );
-                return false;
-            "
-        >
-
-            🚀 BUY ROBLOTFY
-
-        </a>
+    `;
 
 
-    </section>
+    overlay.style.display =
+        "grid";
 
 
+    document
+        .getElementById("again")
+        .onclick = start;
 
-    <!-- =====================================================
-         FOOTER
-    ====================================================== -->
+}
 
-    <footer>
 
-        🎮 ROBLOTFY © 2026
+/* =========================
+   GAME LOOP
+========================= */
 
-        <br><br>
+function loop(now) {
 
-        Made for memes.
-        Powered by the community. 💙
+    if (!running) {
+        return;
+    }
 
-    </footer>
 
+    let dt =
+        Math.min(
+            32,
+            now - last
+        );
+
+
+    last = now;
+
+
+    score +=
+        dt * 0.018;
+
+
+    speed +=
+        dt * 0.00012;
+
+
+    obstacleTimer += dt;
+
+    coinTimer += dt;
+
+
+    scoreEl.textContent =
+        Math.floor(score);
+
+
+    /* Spawn obstacles */
+
+    if (
+        obstacleTimer >
+        Math.max(
+            650,
+            1250 - speed * 45
+        )
+    ) {
+
+        spawn("obstacle");
+
+        obstacleTimer = 0;
+
+    }
+
+
+    /* Spawn coins */
+
+    if (coinTimer > 1050) {
+
+        spawn("coin");
+
+        coinTimer = 0;
+
+    }
+
+
+    /* Move objects */
+
+    for (
+        let i = objects.length - 1;
+        i >= 0;
+        i--
+    ) {
+
+        const object =
+            objects[i];
+
+
+        object.x -=
+            speed * dt / 16.67;
+
+
+        object.element.style.left =
+            object.x + "px";
+
+
+        /* Obstacle collision */
+
+        if (
+            object.type === "obstacle" &&
+            hit(player, object.element)
+        ) {
+
+            end();
+
+            return;
+
+        }
+
+
+        /* Coin collision */
+
+        if (
+            object.type === "coin" &&
+            hit(player, object.element)
+        ) {
+
+            score += 30;
+
+
+            object.element.remove();
+
+
+            objects.splice(i, 1);
+
+
+            continue;
+
+        }
+
+
+        /* Remove old objects */
+
+        if (object.x < -80) {
+
+            object.element.remove();
+
+            objects.splice(i, 1);
+
+        }
+
+    }
+
+
+    requestAnimationFrame(loop);
+
+}
+
+
+/* =========================
+   CONTROLS
+========================= */
+
+document
+    .getElementById("start")
+    .onclick = start;
+
+
+document
+    .getElementById("mobileJump")
+    .onclick = function(event) {
+
+        event.stopPropagation();
+
+        jump();
+
+    };
+
+
+game.addEventListener(
+    "pointerdown",
+    function() {
+
+        if (running) {
+            jump();
+        }
+
+    }
+);
+
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.code === "Space" ||
+            event.code === "ArrowUp"
+        ) {
+
+            event.preventDefault();
+
+
+            if (!running) {
+
+                start();
+
+            } else {
+
+                jump();
+
+            }
+
+        }
+
+    }
+);
+
+</script>
 
 </body>
-
 </html>
-```
