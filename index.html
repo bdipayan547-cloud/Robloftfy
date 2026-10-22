@@ -7,10 +7,19 @@
 <title>ROBLOTFY — The Blocky Meme</title>
 
 <style>
+
+/* =====================================================
+   RESET
+===================================================== */
+
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -25,14 +34,17 @@ a {
     color: inherit;
 }
 
-/* =========================
-   NAVBAR
-========================= */
 
-.nav {
+/* =====================================================
+   NAVBAR
+===================================================== */
+
+.navbar {
     position: sticky;
     top: 0;
-    z-index: 20;
+    z-index: 1000;
+
+    width: 100%;
 
     display: flex;
     justify-content: space-between;
@@ -41,6 +53,7 @@ a {
     padding: 14px 6%;
 
     background: #ffd83d;
+
     border-bottom: 5px solid #17151f;
 }
 
@@ -48,69 +61,73 @@ a {
     font-size: 30px;
     font-weight: 1000;
     letter-spacing: -2px;
+
     text-shadow: 3px 3px #ffffff;
 }
 
-.navlinks {
+.nav-buttons {
     display: flex;
     gap: 12px;
 }
 
-/* =========================
-   BUTTONS
-========================= */
 
-.btn {
+/* =====================================================
+   BUTTONS
+===================================================== */
+
+.button {
     display: inline-block;
 
-    padding: 11px 17px;
+    padding: 12px 18px;
+
+    background: #ffffff;
 
     border: 4px solid #17151f;
     border-radius: 13px;
 
-    background: #ffffff;
-
+    font-size: 15px;
     font-weight: 1000;
 
     box-shadow: 5px 5px #17151f;
 
     cursor: pointer;
 
-    transition: 0.12s;
+    transition: 0.12s ease;
 }
 
-.btn:hover {
+.button:hover {
     transform: translate(2px, 2px);
     box-shadow: 3px 3px #17151f;
 }
 
-.btn:active {
+.button:active {
     transform: translate(5px, 5px);
     box-shadow: 0 0 #17151f;
 }
 
-.buy {
+.button-pink {
     background: #ff5c9a;
 }
 
-/* =========================
+
+/* =====================================================
    HERO
-========================= */
+===================================================== */
 
 .hero {
-    min-height: 620px;
+    min-height: 650px;
 
-    padding: 65px 6%;
+    padding: 70px 6%;
 
     display: grid;
-    grid-template-columns: 1.05fr 0.95fr;
+    grid-template-columns: 1fr 1fr;
 
-    gap: 35px;
+    gap: 50px;
 
     align-items: center;
 }
 
-.hero h1 {
+.hero-content h1 {
     font-size: clamp(55px, 9vw, 110px);
 
     line-height: 0.82;
@@ -120,23 +137,25 @@ a {
     letter-spacing: -7px;
 }
 
-.hero h1 span {
+.hero-content h1 span {
     color: #ff5c9a;
 
     text-shadow: 6px 6px #17151f;
 }
 
-.hero p {
-    font-size: 20px;
-
-    font-weight: 800;
-
+.hero-content p {
     max-width: 650px;
 
-    margin: 28px 0;
+    margin: 30px 0;
+
+    font-size: 20px;
+
+    line-height: 1.5;
+
+    font-weight: 800;
 }
 
-.hero-actions {
+.hero-buttons {
     display: flex;
 
     gap: 15px;
@@ -144,167 +163,202 @@ a {
     flex-wrap: wrap;
 }
 
-/* =========================
-   MASCOT
-========================= */
 
-.mascot-card {
+/* =====================================================
+   CHARACTER
+===================================================== */
+
+.character-container {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+.character-card {
     width: min(440px, 90vw);
 
     aspect-ratio: 1;
+
+    padding: 25px;
+
+    background: #ffd83d;
 
     border: 7px solid #17151f;
 
     border-radius: 38px;
 
-    background: #ffd83d;
-
     box-shadow: 14px 14px #17151f;
 
-    padding: 25px;
-
     transform: rotate(2deg);
+
+    overflow: hidden;
 }
 
-.mascot-card img {
+.character-card img {
     width: 100%;
     height: 100%;
 
     object-fit: contain;
+
+    display: block;
 }
 
-/* =========================
-   GENERAL SECTIONS
-========================= */
+
+/* =====================================================
+   SECTIONS
+===================================================== */
 
 .section {
-    padding: 70px 6%;
+    padding: 75px 6%;
 
     background: #fffdf7;
 
     border-top: 6px solid #17151f;
 }
 
-.section h2 {
+.section-title {
+    text-align: center;
+
     font-size: clamp(40px, 6vw, 72px);
 
     font-weight: 1000;
 
     letter-spacing: -4px;
 
-    text-align: center;
-
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 }
 
-/* =========================
+
+/* =====================================================
    STATS
-========================= */
+===================================================== */
 
 .stats {
+    max-width: 1100px;
+
+    margin: auto;
+
     display: grid;
 
     grid-template-columns: repeat(3, 1fr);
 
     gap: 20px;
-
-    max-width: 1050px;
-
-    margin: auto;
 }
 
 .stat {
-    padding: 25px;
+    padding: 30px;
+
+    text-align: center;
+
+    background: #ffffff;
 
     border: 5px solid #17151f;
 
     border-radius: 22px;
 
-    background: #ffffff;
-
     box-shadow: 8px 8px #17151f;
 
-    text-align: center;
+    font-size: 18px;
 
     font-weight: 1000;
 }
 
-.stat b {
-    font-size: 40px;
-
+.stat-icon {
     display: block;
 
-    margin-bottom: 8px;
+    font-size: 45px;
+
+    margin-bottom: 10px;
 }
 
-/* =========================
+
+/* =====================================================
    GAME SECTION
-========================= */
+===================================================== */
 
 .game-section {
     background: #65d66f;
 }
 
-.game-intro {
+.game-description {
+    max-width: 700px;
+
+    margin: -20px auto 30px;
+
     text-align: center;
 
     font-size: 18px;
 
+    line-height: 1.5;
+
     font-weight: 800;
-
-    max-width: 700px;
-
-    margin: -15px auto 25px;
 }
 
-.game-ui {
+.game-container {
+    width: 100%;
+
+    max-width: 1100px;
+
+    margin: auto;
+}
+
+
+/* =====================================================
+   GAME SCORE
+===================================================== */
+
+.game-scorebar {
     display: flex;
 
     justify-content: space-between;
 
     align-items: center;
 
-    margin-bottom: 12px;
-
-    gap: 10px;
+    margin-bottom: 15px;
 }
 
-.badge {
+.score-box {
+    padding: 10px 15px;
+
     background: #ffffff;
 
     border: 4px solid #17151f;
 
     border-radius: 12px;
 
-    padding: 9px 14px;
-
     font-weight: 1000;
 
     box-shadow: 4px 4px #17151f;
 }
 
-/* =========================
-   GAME CANVAS
-========================= */
 
-#game {
+/* =====================================================
+   GAME AREA
+===================================================== */
+
+#runnerGame {
     position: relative;
 
     width: 100%;
 
     height: 330px;
 
-    border: 7px solid #17151f;
-
-    border-radius: 25px;
+    overflow: hidden;
 
     background:
         linear-gradient(
-            #63c8ff 0 68%,
-            #8be77d 68%
+            to bottom,
+            #61c9ff 0%,
+            #61c9ff 68%,
+            #8be77d 68%,
+            #8be77d 100%
         );
 
-    overflow: hidden;
+    border: 7px solid #17151f;
+
+    border-radius: 25px;
 
     box-shadow: 10px 10px #17151f;
 
@@ -313,102 +367,123 @@ a {
     cursor: pointer;
 }
 
-/* Sun */
 
-.sun {
+/* =====================================================
+   SUN
+===================================================== */
+
+.game-sun {
     position: absolute;
-
-    right: 8%;
-    top: 25px;
 
     width: 65px;
     height: 65px;
 
+    right: 8%;
+    top: 25px;
+
+    background: #ffd83d;
+
     border: 5px solid #17151f;
 
     border-radius: 50%;
-
-    background: #ffd83d;
 }
 
-/* Clouds */
 
-.gcloud {
+/* =====================================================
+   CLOUDS
+===================================================== */
+
+.game-cloud {
     position: absolute;
 
-    width: 115px;
-    height: 35px;
+    width: 120px;
+    height: 38px;
+
+    background: #ffffff;
 
     border: 4px solid #17151f;
 
-    border-radius: 30px;
-
-    background: #ffffff;
+    border-radius: 40px;
 }
 
-.gcloud.a {
-    top: 45px;
+.cloud-one {
+    top: 50px;
     left: 12%;
 }
 
-.gcloud.b {
-    top: 105px;
-    left: 45%;
+.cloud-two {
+    top: 110px;
+    left: 50%;
 }
 
-/* Ground */
 
-.ground {
+/* =====================================================
+   GROUND
+===================================================== */
+
+.game-ground {
     position: absolute;
 
     left: 0;
     right: 0;
 
-    bottom: 57px;
+    bottom: 55px;
 
-    border-top: 6px solid #17151f;
+    height: 6px;
+
+    background: #17151f;
 }
 
-/* =========================
-   PLAYER
-========================= */
 
-#player {
+/* =====================================================
+   PLAYER
+===================================================== */
+
+#runnerPlayer {
     position: absolute;
 
     left: 90px;
 
-    bottom: 58px;
+    bottom: 61px;
 
-    width: 70px;
-    height: 90px;
+    width: 72px;
+    height: 88px;
 
-    z-index: 5;
+    z-index: 20;
 
-    filter: drop-shadow(
-        4px 4px 0 #17151f
-    );
+    filter:
+        drop-shadow(
+            4px 4px 0 #17151f
+        );
+
+    user-select: none;
 }
 
-#player img {
+#runnerPlayer img {
     width: 100%;
     height: 100%;
 
     object-fit: contain;
+
+    pointer-events: none;
 }
 
-#player.jump {
-    bottom: 155px;
+
+/* Jump position */
+
+#runnerPlayer.jumping {
+    bottom: 165px;
 }
 
-/* =========================
-   OBSTACLES
-========================= */
 
-.obstacle {
+/* =====================================================
+   OBSTACLE
+===================================================== */
+
+.runner-obstacle {
     position: absolute;
 
-    bottom: 58px;
+    bottom: 61px;
 
     width: 45px;
     height: 65px;
@@ -418,166 +493,196 @@ a {
     border: 5px solid #17151f;
 
     border-radius: 9px 9px 2px 2px;
+
+    z-index: 10;
 }
 
-.obstacle:before,
-.obstacle:after {
+.runner-obstacle::before,
+.runner-obstacle::after {
     content: "";
 
     position: absolute;
 
-    background: #17151f;
-
     width: 5px;
-    height: 27px;
+    height: 28px;
 
-    top: -18px;
+    top: -20px;
+
+    background: #17151f;
 }
 
-.obstacle:before {
-    left: 8px;
+.runner-obstacle::before {
+    left: 7px;
 
     transform: rotate(-28deg);
 }
 
-.obstacle:after {
-    right: 8px;
+.runner-obstacle::after {
+    right: 7px;
 
     transform: rotate(28deg);
 }
 
-/* =========================
-   COINS
-========================= */
 
-.coin {
+/* =====================================================
+   COIN
+===================================================== */
+
+.runner-coin {
     position: absolute;
 
-    width: 28px;
-    height: 28px;
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    background: #ffd83d;
 
     border: 4px solid #17151f;
 
     border-radius: 50%;
 
-    background: #ffd83d;
-
-    display: grid;
-
-    place-items: center;
+    font-size: 14px;
 
     font-weight: 1000;
+
+    z-index: 15;
 }
 
-/* =========================
-   GAME START / GAME OVER
-========================= */
 
-#overlay {
+/* =====================================================
+   START / GAME OVER SCREEN
+===================================================== */
+
+#gameOverlay {
     position: absolute;
 
     inset: 0;
 
-    z-index: 10;
+    z-index: 100;
 
-    background: rgba(255, 255, 255, 0.9);
+    display: flex;
 
-    display: grid;
+    justify-content: center;
 
-    place-items: center;
+    align-items: center;
+
+    background: rgba(255, 255, 255, 0.90);
 }
 
-.card {
+.game-card {
+    max-width: 400px;
+
+    margin: 20px;
+
+    padding: 30px;
+
+    text-align: center;
+
     background: #ffd83d;
 
     border: 6px solid #17151f;
 
     border-radius: 22px;
 
-    padding: 25px;
-
-    text-align: center;
-
     box-shadow: 9px 9px #17151f;
-
-    max-width: 390px;
-
-    margin: 20px;
 }
 
-.card h3 {
+.game-card h3 {
     font-size: 35px;
 
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
-.card p {
+.game-card p {
+    font-size: 16px;
+
+    line-height: 1.5;
+
     font-weight: 800;
 
-    margin-bottom: 18px;
+    margin-bottom: 20px;
 }
 
-/* Mobile jump */
 
-#mobileJump {
+/* =====================================================
+   MOBILE JUMP BUTTON
+===================================================== */
+
+#mobileJumpButton {
     display: none;
 }
 
-/* =========================
-   BUY SECTION
-========================= */
 
-.token {
+/* =====================================================
+   BUY SECTION
+===================================================== */
+
+.buy-section {
     background: #ffd83d;
 }
 
-.buybox {
+.buy-box {
     max-width: 800px;
 
     margin: auto;
 
+    padding: 45px;
+
     text-align: center;
+
+    background: #ffffff;
 
     border: 6px solid #17151f;
 
     border-radius: 28px;
 
-    padding: 40px;
-
-    background: #ffffff;
-
     box-shadow: 10px 10px #17151f;
 }
 
-.buybox p {
-    font-weight: 800;
+.buy-box h3 {
+    font-size: 32px;
 
-    margin: 12px auto 25px;
+    margin-bottom: 12px;
 }
 
-/* =========================
+.buy-box p {
+    font-weight: 800;
+
+    line-height: 1.5;
+
+    margin-bottom: 25px;
+}
+
+
+/* =====================================================
    FOOTER
-========================= */
+===================================================== */
 
 footer {
     padding: 30px 6%;
+
+    text-align: center;
 
     background: #ff5c9a;
 
     border-top: 6px solid #17151f;
 
     font-weight: 1000;
-
-    text-align: center;
 }
 
-/* =========================
+
+/* =====================================================
    MOBILE
-========================= */
+===================================================== */
 
 @media (max-width: 800px) {
 
-    .nav {
+    .navbar {
         padding: 12px 4%;
     }
 
@@ -585,7 +690,7 @@ footer {
         font-size: 24px;
     }
 
-    .navlinks .btn:first-child {
+    .nav-buttons .community-button {
         display: none;
     }
 
@@ -595,7 +700,7 @@ footer {
         padding-top: 45px;
     }
 
-    .hero h1 {
+    .hero-content h1 {
         letter-spacing: -4px;
     }
 
@@ -603,58 +708,61 @@ footer {
         grid-template-columns: 1fr;
     }
 
-    .stat b {
-        font-size: 32px;
-    }
-
-    #game {
+    #runnerGame {
         height: 280px;
     }
 
-    .ground {
+    .game-ground {
         bottom: 49px;
     }
 
-    #player {
+    #runnerPlayer {
         left: 55px;
 
-        bottom: 50px;
+        bottom: 55px;
 
         width: 60px;
-        height: 78px;
+        height: 75px;
     }
 
-    #player.jump {
-        bottom: 140px;
+    #runnerPlayer.jumping {
+        bottom: 145px;
     }
 
-    .obstacle {
-        bottom: 49px;
+    .runner-obstacle {
+        bottom: 55px;
     }
 
-    #mobileJump {
+    #mobileJumpButton {
         display: inline-block;
     }
+
+    .buy-box {
+        padding: 30px 20px;
+    }
 }
+
 </style>
 </head>
 
+
 <body>
 
-<!-- =========================
-     NAVIGATION
-========================= -->
 
-<nav class="nav">
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<nav class="navbar">
 
     <div class="logo">
         ROBLOTFY
     </div>
 
-    <div class="navlinks">
+    <div class="nav-buttons">
 
         <a
-            class="btn"
+            class="button community-button"
             href="https://x.com/dipayanmeme"
             target="_blank"
         >
@@ -662,7 +770,7 @@ footer {
         </a>
 
         <a
-            class="btn buy"
+            class="button button-pink"
             href="#buy"
         >
             BUY NOW
@@ -673,13 +781,14 @@ footer {
 </nav>
 
 
-<!-- =========================
+
+<!-- =====================================================
      HERO
-========================= -->
+===================================================== -->
 
 <header class="hero">
 
-    <div>
+    <div class="hero-content">
 
         <h1>
             THE<br>
@@ -693,18 +802,18 @@ footer {
             and an even bigger community.
         </p>
 
-        <div class="hero-actions">
+        <div class="hero-buttons">
 
             <a
-                class="btn buy"
+                class="button button-pink"
                 href="#buy"
             >
                 🚀 BUY ROBLOTFY
             </a>
 
             <a
-                class="btn"
-                href="#game"
+                class="button"
+                href="#runner"
             >
                 🎮 PLAY THE GAME
             </a>
@@ -714,13 +823,13 @@ footer {
     </div>
 
 
-    <div>
+    <div class="character-container">
 
-        <div class="mascot-card">
+        <div class="character-card">
 
             <img
                 src="./robloftfy.png"
-                alt="ROBLOTFY character"
+                alt="ROBLOTFY Roblox character"
             >
 
         </div>
@@ -730,21 +839,25 @@ footer {
 </header>
 
 
-<!-- =========================
-     WHY ROBLOTFY
-========================= -->
+
+<!-- =====================================================
+     FEATURES
+===================================================== -->
 
 <section class="section">
 
-    <h2>
+    <h2 class="section-title">
         WHY ROBLOTFY?
     </h2>
+
 
     <div class="stats">
 
         <div class="stat">
 
-            <b>🎮</b>
+            <span class="stat-icon">
+                🎮
+            </span>
 
             BLOCKY ENERGY
 
@@ -753,7 +866,9 @@ footer {
 
         <div class="stat">
 
-            <b>😂</b>
+            <span class="stat-icon">
+                😂
+            </span>
 
             MEME POWER
 
@@ -762,7 +877,9 @@ footer {
 
         <div class="stat">
 
-            <b>🚀</b>
+            <span class="stat-icon">
+                🚀
+            </span>
 
             COMMUNITY FIRST
 
@@ -773,111 +890,131 @@ footer {
 </section>
 
 
-<!-- =========================
+
+<!-- =====================================================
      ROBLOTFY RUNNER
-========================= -->
+===================================================== -->
 
 <section
     class="section game-section"
-    id="game"
+    id="runner"
 >
 
-    <h2>
+    <h2 class="section-title">
         ROBLOTFY RUNNER
     </h2>
 
-    <p class="game-intro">
+
+    <p class="game-description">
 
         Run, jump and collect ROBLOTFY coins.
-        Dodge the cursed pink blocks and beat
-        your high score!
+        Dodge the pink obstacles and try to
+        beat your highest score!
 
     </p>
 
 
-    <div class="game-ui">
-
-        <div class="badge">
-
-            SCORE:
-            <span id="score">0</span>
-
-        </div>
+    <div class="game-container">
 
 
-        <div class="badge">
+        <!-- SCORE BAR -->
 
-            BEST:
-            <span id="best">0</span>
+        <div class="game-scorebar">
 
-        </div>
+            <div class="score-box">
 
-
-        <button
-            class="btn"
-            id="mobileJump"
-        >
-            JUMP ⬆
-        </button>
-
-    </div>
-
-
-    <div id="game">
-
-        <!-- Sun -->
-
-        <div class="sun"></div>
-
-
-        <!-- Clouds -->
-
-        <div class="gcloud a"></div>
-
-        <div class="gcloud b"></div>
-
-
-        <!-- Ground -->
-
-        <div class="ground"></div>
-
-
-        <!-- Player -->
-
-        <div id="player">
-
-            <img
-                src="./robloftfy.png"
-                alt="ROBLOTFY Runner"
-            >
-
-        </div>
-
-
-        <!-- Start Screen -->
-
-        <div id="overlay">
-
-            <div class="card">
-
-                <h3>
-                    🎮 READY?
-                </h3>
-
-                <p>
-                    Press SPACE, click, or tap
-                    to jump. Collect coins
-                    and survive!
-                </p>
-
-                <button
-                    class="btn buy"
-                    id="start"
-                >
-                    START RUNNING
-                </button>
+                SCORE:
+                <span id="scoreValue">
+                    0
+                </span>
 
             </div>
+
+
+            <div class="score-box">
+
+                BEST:
+                <span id="bestValue">
+                    0
+                </span>
+
+            </div>
+
+
+            <button
+                class="button"
+                id="mobileJumpButton"
+            >
+                JUMP ⬆
+            </button>
+
+        </div>
+
+
+
+        <!-- =================================================
+             ACTUAL GAME
+        ================================================= -->
+
+        <div id="runnerGame">
+
+
+            <!-- SUN -->
+
+            <div class="game-sun"></div>
+
+
+            <!-- CLOUDS -->
+
+            <div class="game-cloud cloud-one"></div>
+
+            <div class="game-cloud cloud-two"></div>
+
+
+            <!-- GROUND -->
+
+            <div class="game-ground"></div>
+
+
+            <!-- PLAYER -->
+
+            <div id="runnerPlayer">
+
+                <img
+                    src="./robloftfy.png"
+                    alt="ROBLOTFY Runner"
+                >
+
+            </div>
+
+
+            <!-- GAME OVERLAY -->
+
+            <div id="gameOverlay">
+
+                <div class="game-card">
+
+                    <h3>
+                        🎮 READY?
+                    </h3>
+
+                    <p>
+                        Press SPACE, click the game,
+                        or tap the jump button.
+                        Collect coins and survive!
+                    </p>
+
+                    <button
+                        class="button button-pink"
+                        id="startGameButton"
+                    >
+                        START RUNNING
+                    </button>
+
+                </div>
+
+            </div>
+
 
         </div>
 
@@ -886,34 +1023,36 @@ footer {
 </section>
 
 
-<!-- =========================
-     BUY SECTION
-========================= -->
+
+<!-- =====================================================
+     BUY
+===================================================== -->
 
 <section
-    class="section token"
+    class="section buy-section"
     id="buy"
 >
 
-    <h2>
+    <h2 class="section-title">
         JOIN THE CHAOS
     </h2>
 
 
-    <div class="buybox">
+    <div class="buy-box">
 
-        <h3 style="font-size:32px">
+        <h3>
             🚀 READY TO BUY?
         </h3>
 
         <p>
-            Replace the button URL with your
-            real token swap or presale link
-            when your contract is ready.
+            Replace the button below with your
+            real token contract or swap URL
+            when your token is ready.
         </p>
 
+
         <a
-            class="btn buy"
+            class="button button-pink"
             href="https://x.com/dipayanmeme"
             target="_blank"
         >
@@ -925,16 +1064,17 @@ footer {
 </section>
 
 
-<!-- =========================
+
+<!-- =====================================================
      FOOTER
-========================= -->
+===================================================== -->
 
 <footer>
 
     ROBLOTFY © 2026 —
     Built for memes, blocks & chaos.
 
-    |
+    <br><br>
 
     <a
         href="https://x.com/dipayanmeme"
@@ -946,131 +1086,137 @@ footer {
 </footer>
 
 
-<!-- =========================
-     GAME JAVASCRIPT
-========================= -->
 
 <script>
 
+/* =====================================================
+   GET GAME ELEMENTS
+===================================================== */
+
 const game =
-    document.getElementById("game");
+    document.getElementById("runnerGame");
 
 const player =
-    document.getElementById("player");
+    document.getElementById("runnerPlayer");
 
 const overlay =
-    document.getElementById("overlay");
+    document.getElementById("gameOverlay");
 
-const scoreEl =
-    document.getElementById("score");
+const scoreValue =
+    document.getElementById("scoreValue");
 
-const bestEl =
-    document.getElementById("best");
+const bestValue =
+    document.getElementById("bestValue");
+
+const startButton =
+    document.getElementById("startGameButton");
+
+const mobileJumpButton =
+    document.getElementById("mobileJumpButton");
 
 
-let running = false;
+/* =====================================================
+   GAME VARIABLES
+===================================================== */
 
-let jumping = false;
+let gameRunning = false;
+
+let isJumping = false;
 
 let score = 0;
 
 let speed = 5;
 
-let last = 0;
+let lastTime = 0;
 
 let obstacleTimer = 0;
 
 let coinTimer = 0;
 
-let objects = [];
+let gameObjects = [];
 
 
-let best =
+/* =====================================================
+   HIGH SCORE
+===================================================== */
+
+let bestScore =
     Number(
         localStorage.getItem(
-            "robloftfyBest"
+            "robloftfyBestScore"
         ) || 0
     );
 
+bestValue.textContent =
+    bestScore;
 
-bestEl.textContent = best;
 
-
-/* =========================
+/* =====================================================
    JUMP
-========================= */
+===================================================== */
 
-function jump() {
+function playerJump() {
 
-    if (!running || jumping) {
+    if (!gameRunning) {
         return;
     }
 
-    jumping = true;
+    if (isJumping) {
+        return;
+    }
 
-    player.classList.add("jump");
+
+    isJumping = true;
+
+    player.classList.add("jumping");
 
 
     setTimeout(function () {
 
-        player.classList.remove("jump");
+        player.classList.remove("jumping");
 
 
         setTimeout(function () {
 
-            jumping = false;
+            isJumping = false;
 
-        }, 90);
+        }, 80);
 
     }, 520);
 
 }
 
 
-/* =========================
-   SPAWN OBJECT
-========================= */
+/* =====================================================
+   CREATE OBSTACLE
+===================================================== */
 
-function spawn(type) {
+function createObstacle() {
 
-    const element =
+    const obstacle =
         document.createElement("div");
 
 
-    const x =
-        game.clientWidth + 30;
+    obstacle.className =
+        "runner-obstacle";
 
 
-    if (type === "obstacle") {
-
-        element.className =
-            "obstacle";
-
-    } else {
-
-        element.className =
-            "coin";
-
-        element.textContent = "R";
-
-        element.style.bottom =
-            (90 + Math.random() * 85) + "px";
-
-    }
+    let x =
+        game.clientWidth + 40;
 
 
-    element.style.left =
+    obstacle.style.left =
         x + "px";
 
 
-    game.appendChild(element);
+    game.appendChild(obstacle);
 
 
-    objects.push({
+    gameObjects.push({
 
-        element: element,
+        element: obstacle,
 
-        type: type,
+        type: "obstacle",
 
         x: x
 
@@ -1079,17 +1225,67 @@ function spawn(type) {
 }
 
 
-/* =========================
-   COLLISION
-========================= */
+/* =====================================================
+   CREATE COIN
+===================================================== */
 
-function hit(a, b) {
+function createCoin() {
+
+    const coin =
+        document.createElement("div");
+
+
+    coin.className =
+        "runner-coin";
+
+
+    coin.innerText =
+        "R";
+
+
+    let x =
+        game.clientWidth + 40;
+
+
+    let height =
+        90 + Math.random() * 90;
+
+
+    coin.style.left =
+        x + "px";
+
+
+    coin.style.bottom =
+        height + "px";
+
+
+    game.appendChild(coin);
+
+
+    gameObjects.push({
+
+        element: coin,
+
+        type: "coin",
+
+        x: x
+
+    });
+
+}
+
+
+/* =====================================================
+   COLLISION DETECTION
+===================================================== */
+
+function collision(first, second) {
 
     const A =
-        a.getBoundingClientRect();
+        first.getBoundingClientRect();
 
     const B =
-        b.getBoundingClientRect();
+        second.getBoundingClientRect();
 
 
     return (
@@ -1107,24 +1303,29 @@ function hit(a, b) {
 }
 
 
-/* =========================
+/* =====================================================
    START GAME
-========================= */
+===================================================== */
 
-function start() {
+function startGame() {
 
-    objects.forEach(function (object) {
+    /* Remove old objects */
+
+    gameObjects.forEach(function(object) {
 
         object.element.remove();
 
     });
 
 
-    objects = [];
+    gameObjects = [];
 
-    running = true;
 
-    jumping = false;
+    /* Reset */
+
+    gameRunning = true;
+
+    isJumping = false;
 
     score = 0;
 
@@ -1135,69 +1336,85 @@ function start() {
     coinTimer = 0;
 
 
-    scoreEl.textContent = 0;
+    scoreValue.textContent =
+        "0";
+
+
+    player.classList.remove(
+        "jumping"
+    );
 
 
     overlay.style.display =
         "none";
 
 
-    player.classList.remove("jump");
-
-
-    last =
+    lastTime =
         performance.now();
 
 
-    requestAnimationFrame(loop);
+    requestAnimationFrame(
+        gameLoop
+    );
 
 }
 
 
-/* =========================
+/* =====================================================
    GAME OVER
-========================= */
+===================================================== */
 
-function end() {
+function gameOver() {
 
-    running = false;
+    gameRunning = false;
 
 
-    if (score > best) {
+    let finalScore =
+        Math.floor(score);
 
-        best =
-            Math.floor(score);
+
+    if (finalScore > bestScore) {
+
+        bestScore =
+            finalScore;
+
 
         localStorage.setItem(
-            "robloftfyBest",
-            best
+            "robloftfyBestScore",
+            bestScore
         );
 
-        bestEl.textContent =
-            best;
+
+        bestValue.textContent =
+            bestScore;
 
     }
 
 
     overlay.innerHTML = `
 
-        <div class="card">
+        <div class="game-card">
 
             <h3>
-                💥 OOPS!
+                💥 GAME OVER!
             </h3>
 
             <p>
-                You scored
-                <b>${Math.floor(score)}</b>.
-                <br>
-                Best:
-                <b>${best}</b>.
+
+                Your Score:
+                <b>${finalScore}</b>
+
+                <br><br>
+
+                Best Score:
+                <b>${bestScore}</b>
+
             </p>
 
+
             <button
-                class="btn buy"
-                id="again"
+                class="button button-pink"
+                id="restartGameButton"
             >
                 PLAY AGAIN
             </button>
@@ -1208,121 +1425,157 @@ function end() {
 
 
     overlay.style.display =
-        "grid";
+        "flex";
 
 
     document
-        .getElementById("again")
-        .onclick = start;
+        .getElementById(
+            "restartGameButton"
+        )
+        .onclick =
+        startGame;
 
 }
 
 
-/* =========================
+/* =====================================================
    GAME LOOP
-========================= */
+===================================================== */
 
-function loop(now) {
+function gameLoop(currentTime) {
 
-    if (!running) {
+    if (!gameRunning) {
         return;
     }
 
 
-    let dt =
+    const deltaTime =
         Math.min(
             32,
-            now - last
+            currentTime - lastTime
         );
 
 
-    last = now;
+    lastTime =
+        currentTime;
 
+
+    /* Increase score */
 
     score +=
-        dt * 0.018;
+        deltaTime * 0.018;
 
 
-    speed +=
-        dt * 0.00012;
-
-
-    obstacleTimer += dt;
-
-    coinTimer += dt;
-
-
-    scoreEl.textContent =
+    scoreValue.textContent =
         Math.floor(score);
 
 
-    /* Spawn obstacles */
+    /* Increase speed */
 
-    if (
-        obstacleTimer >
+    speed +=
+        deltaTime * 0.00012;
+
+
+    /* Timers */
+
+    obstacleTimer +=
+        deltaTime;
+
+    coinTimer +=
+        deltaTime;
+
+
+    /* =================================================
+       SPAWN OBSTACLE
+    ================================================= */
+
+    const obstacleDelay =
         Math.max(
             650,
             1250 - speed * 45
-        )
+        );
+
+
+    if (
+        obstacleTimer >
+        obstacleDelay
     ) {
 
-        spawn("obstacle");
+        createObstacle();
 
         obstacleTimer = 0;
 
     }
 
 
-    /* Spawn coins */
+    /* =================================================
+       SPAWN COIN
+    ================================================= */
 
-    if (coinTimer > 1050) {
+    if (
+        coinTimer > 1000
+    ) {
 
-        spawn("coin");
+        createCoin();
 
         coinTimer = 0;
 
     }
 
 
-    /* Move objects */
+    /* =================================================
+       MOVE OBJECTS
+    ================================================= */
 
     for (
-        let i = objects.length - 1;
+        let i = gameObjects.length - 1;
         i >= 0;
         i--
     ) {
 
         const object =
-            objects[i];
+            gameObjects[i];
 
 
         object.x -=
-            speed * dt / 16.67;
+            speed *
+            deltaTime /
+            16.67;
 
 
         object.element.style.left =
             object.x + "px";
 
 
-        /* Obstacle collision */
+        /* =================================================
+           OBSTACLE COLLISION
+        ================================================= */
 
         if (
             object.type === "obstacle" &&
-            hit(player, object.element)
+            collision(
+                player,
+                object.element
+            )
         ) {
 
-            end();
+            gameOver();
 
             return;
 
         }
 
 
-        /* Coin collision */
+        /* =================================================
+           COIN COLLECTION
+        ================================================= */
 
         if (
             object.type === "coin" &&
-            hit(player, object.element)
+            collision(
+                player,
+                object.element
+            )
         ) {
 
             score += 30;
@@ -1331,7 +1584,10 @@ function loop(now) {
             object.element.remove();
 
 
-            objects.splice(i, 1);
+            gameObjects.splice(
+                i,
+                1
+            );
 
 
             continue;
@@ -1339,55 +1595,87 @@ function loop(now) {
         }
 
 
-        /* Remove old objects */
+        /* =================================================
+           DELETE OLD OBJECT
+        ================================================= */
 
-        if (object.x < -80) {
+        if (
+            object.x < -100
+        ) {
 
             object.element.remove();
 
-            objects.splice(i, 1);
+
+            gameObjects.splice(
+                i,
+                1
+            );
 
         }
 
     }
 
 
-    requestAnimationFrame(loop);
+    requestAnimationFrame(
+        gameLoop
+    );
 
 }
 
 
-/* =========================
-   CONTROLS
-========================= */
+/* =====================================================
+   START BUTTON
+===================================================== */
 
-document
-    .getElementById("start")
-    .onclick = start;
-
-
-document
-    .getElementById("mobileJump")
-    .onclick = function(event) {
+startButton.addEventListener(
+    "click",
+    function(event) {
 
         event.stopPropagation();
 
-        jump();
-
-    };
-
-
-game.addEventListener(
-    "pointerdown",
-    function() {
-
-        if (running) {
-            jump();
-        }
+        startGame();
 
     }
 );
 
+
+/* =====================================================
+   MOBILE JUMP
+===================================================== */
+
+mobileJumpButton.addEventListener(
+    "click",
+    function(event) {
+
+        event.stopPropagation();
+
+        playerJump();
+
+    }
+);
+
+
+/* =====================================================
+   CLICK GAME TO JUMP
+===================================================== */
+
+game.addEventListener(
+    "pointerdown",
+    function(event) {
+
+        if (!gameRunning) {
+            return;
+        }
+
+        playerJump();
+
+    }
+);
+
+
+/* =====================================================
+   KEYBOARD
+===================================================== */
 
 document.addEventListener(
     "keydown",
@@ -1401,13 +1689,13 @@ document.addEventListener(
             event.preventDefault();
 
 
-            if (!running) {
+            if (!gameRunning) {
 
-                start();
+                startGame();
 
             } else {
 
-                jump();
+                playerJump();
 
             }
 
